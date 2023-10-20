@@ -28,6 +28,11 @@
     let user = oktaAuth.token.decode(obj['id_token']).payload;
 
     displayUserDetails(user);
+  } else {
+    await oktaAuth.token.getWithRedirect({
+      responseType: ['token', 'id_token'],
+      idp: '0oaapbz2zcu5rMaiV1d7',
+    });
   }
 
   //   let user = await sdk.refresh();
